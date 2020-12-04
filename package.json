@@ -1,6 +1,6 @@
 {
   "name": "react-bootstrap-enhanced",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "An enhanced version of react-bootstrap for common UI.",
   "author": "yelwinsoe",
   "license": "MIT",
@@ -8,7 +8,11 @@
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
-  "keywords": ["react","bootstrap","ui component"],
+  "keywords": [
+    "react",
+    "bootstrap",
+    "ui component"
+  ],
   "engines": {
     "node": ">=10"
   },
@@ -25,7 +29,9 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.0.0",
+    "bootstrap": "^4.5.3",
+    "react-bootstrap": "^1.4.0"
   },
   "devDependencies": {
     "microbundle-crl": "^0.13.10",
@@ -50,9 +56,5 @@
   },
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "bootstrap": "^4.5.3",
-    "react-bootstrap": "^1.4.0"
-  }
+  ]
 }

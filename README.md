@@ -13,7 +13,7 @@ npm install --save react-bootstrap-enhanced
 ## Usage
 ### PaginationPlus
 ```jsx
-import PaginationPlus from 'react-bootstrap-enhanced'
+import { PaginationPlus } from 'react-bootstrap-enhanced'
 
 <PaginationPlus 
   total={100}
