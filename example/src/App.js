@@ -7,7 +7,7 @@ const App = () => {
   const test = Array.from(Array(1000), (e, i) => {
     return i
   })
-  const [pageSize, setPageSize] = useState(20)
+  const [pageSize, setPageSize] = useState(5)
   const [records, setRecords] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -18,6 +18,7 @@ const App = () => {
 
   useEffect(() => {
     handleOnChange(currentPage)
+    // eslint-disable-next-line
   }, [pageSize])
 
   return (
@@ -34,10 +35,14 @@ const App = () => {
       <PaginationPlus
         total={test.length}
         pageSize={pageSize}
-        currentPage={currentPage}
+        // allPageSize={[2, 5, 7, 300]}
+        // currentPage={currentPage}
         onChange={handleOnChange}
+        onPageSizeChange={(val) => {
+          setPageSize(val)
+        }}
         style={{ float: 'right' }}
-        size='lg'
+        // size='sm'
       />
     </>
   )

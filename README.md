@@ -16,12 +16,14 @@ npm install --save react-bootstrap-enhanced
 import { PaginationPlus } from 'react-bootstrap-enhanced'
 
 <PaginationPlus 
-  total={100}
-  perPage={10}
-  currentPage={1}
-  onChange={handleOnChange}
-  style={{ float: 'right' }}
-  size='sm'
+  total={100} // Mandatory - total number of record
+  pageSize={10} // Mandatory - number of record per page
+  allPageSize={[10, 20, 40, 80, 160]} // Optional - For page size option Dropdown
+  currentPage={1} // Optional - default to 1
+  style={{ float: 'right' }} // Optional style
+  size='sm' // Optional size
+  onChange={handleOnChange} // New page number as a param
+  onPageSizeChange={handlePageSizeChange} // New page size as a param, this is need for page size Dropdown
 />
 ```
 

@@ -1,4 +1,4 @@
-import PaginationPlus from './PaginationPlus'
+import PaginationPlus from './lib/PaginationPlus'
 
 export {
   PaginationPlus
