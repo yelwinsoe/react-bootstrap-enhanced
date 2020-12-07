@@ -1,2 +1,2 @@
 export { default as PaginationPlus } from './lib/PaginationPlus'
-export { default as Sidebar } from './lib/Sidebar'
+export { default as Layout } from './lib/Layout'

@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react'
 
 const Sidebar = (props) => {
-  const [show, setShow] = useState(props.show || true)
+  const [show, setShow] = useState(typeof props.show !== 'undefined' ? props.show : true)
   const [isMobile, setIsMobile] = useState(window.innerWidth < 992)
+  console.log(show)
 
   const sidebarRef = useRef(null)
   const handleClickOutside = (e) => {
