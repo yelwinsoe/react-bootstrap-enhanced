@@ -6,7 +6,7 @@ const PaginationPlus = (props) => {
     return <p>Props total and pageSize can't be empty.</p>
   }
   const [currentPage, setCurrentPage] = useState(props.currentPage ? props.currentPage - 1 : 0)
-  const [pageSize, setPageSize] = useState(props.pageSize)
+  const [pageSize, setPageSize] = useState(props.pageSize || 10)
   const [pagiItems, setPagiItems] = useState([])
   const [goToPage, setGoToPage] = useState(null)
   const allPageSize = props.allPageSize ? props.allPageSize : [10, 20, 40, 80, 160]
@@ -146,9 +146,6 @@ const PaginationPlus = (props) => {
           onSubmit={handleGoTo}
           style={{ width: '100%' }}
         >
-          {/* <Form.Label htmlFor='inlineFormInputName2'>
-            Go to
-          </Form.Label> */}
           <Form.Control
             type='number'
             className='mb-1 mr-sm-1'

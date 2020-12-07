@@ -18,14 +18,18 @@ import { PaginationPlus } from 'react-bootstrap-enhanced'
 <PaginationPlus 
   total={100} // Mandatory - total number of record
   pageSize={10} // Mandatory - number of record per page
-  allPageSize={[10, 20, 40, 80, 160]} // Optional - For page size option Dropdown
-  currentPage={1} // Optional - default to 1
-  style={{ float: 'right' }} // Optional style
-  size='sm' // Optional size
-  onChange={handleOnChange} // New page number as a param
-  onPageSizeChange={handlePageSizeChange} // New page size as a param, this is need for page size Dropdown
 />
 ```
+#### Params
+| Name | Default | Required | Description |
+| ---- | ------- | ---------- | -------- |
+| total | NA | Yes | Total number of record |
+| pageSize | 10 | Yes | Number of record per page |
+| currentPage | 1 | No | Current selected page |
+| style | NA | No | Optional Bootstrap pagination style |
+| size | NA | No | Optional size 'sm/md/lg' |
+| onChange | NA | No | On page changes, new page number as param |
+| onPageSizeChange | NA | No | New page size as a param, this is needed for page size selection |
 
 ## License
 
