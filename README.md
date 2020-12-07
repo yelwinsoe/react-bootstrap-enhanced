@@ -29,4 +29,4 @@ import { PaginationPlus } from 'react-bootstrap-enhanced'
 
 ## License
 
-MIT © [yelwinsoe](https://github.com/yelwinsoe)
+[MIT](https://github.com/yelwinsoe/react-bootstrap-enhanced/blob/master/LICENSE) © [yelwinsoe](https://github.com/yelwinsoe)
