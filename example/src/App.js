@@ -82,7 +82,7 @@ const App = () => {
                 setPageSize(val)
               }}
               style={{ float: 'right' }}
-              // size='sm'
+              size='md'
             />
           </div>
         }

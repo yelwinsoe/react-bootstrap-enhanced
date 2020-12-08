@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Pagination, Form, Button, Row, Col, Dropdown } from 'react-bootstrap'
+import { Pagination, Form, Button, Row, Col, Dropdown, DropdownButton } from 'react-bootstrap'
 
 const PaginationPlus = (props) => {
   if (typeof props.total === 'undefined' || typeof props.pageSize === 'undefined') {
@@ -10,6 +10,8 @@ const PaginationPlus = (props) => {
   const [pagiItems, setPagiItems] = useState([])
   const [goToPage, setGoToPage] = useState(null)
   const allPageSize = props.allPageSize ? props.allPageSize : [10, 20, 40, 80, 160]
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 992)
+  const [pagiSize, setPagiSize] = useState(!isMobile ? props.size || 'md' : 'sm')
   let numOfPage = Math.ceil(props.total / props.pageSize)
 
   const handleChange = (e) => {
@@ -19,6 +21,17 @@ const PaginationPlus = (props) => {
         props.onChange(parseInt(e.target.text))
       }
     }
+  }
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('resize', () => {
+      setIsMobile(window.innerWidth < 992)
+      if (window.innerWidth < 992) {
+        setPagiSize('sm')
+      } else {
+        setPagiSize(props.size)
+      }
+    })
   }
 
   const handleGoTo = (e) => {
@@ -96,71 +109,69 @@ const PaginationPlus = (props) => {
 
   return (
     <Row>
-      <Col xs={12} md={typeof props.onPageSizeChange !== 'undefined' ? 9 : 10}>
-        <Pagination style={props.style} size={props.size}>
-          <Pagination.First onClick={() => {
-            updateCurrentPage(0)
-          }}
-          />
-          <Pagination.Prev onClick={() => {
-            if (currentPage > 0) {
-              updateCurrentPage(currentPage - 1)
-            }
-          }}
-          />
-          {pagiItems.map((i) => {
-            if (i === 'dotted') {
-              return <Pagination.Item key={Math.random()} disabled>...</Pagination.Item>
-            } else {
-              return <Pagination.Item key={i} active={i === currentPage} onClick={handleChange}>{i + 1}</Pagination.Item>
-            }
-          })}
-          <Pagination.Next onClick={() => {
-            if (currentPage < numOfPage - 1) {
-              updateCurrentPage(currentPage + 1)
-            }
-          }}
-          />
-          <Pagination.Last onClick={() => {
-            updateCurrentPage(numOfPage - 1)
-          }}
-          />
-        </Pagination>
-      </Col>
-      {typeof props.onPageSizeChange !== 'undefined' &&
-        <Col md={1}>
-          <Dropdown style={{ width: '100%' }}>
-            <Dropdown.Toggle id='dropdown-basic' size={props.size}>
-              {pageSize} / Page
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
+      <Col xs={12}>
+        <div style={props.style}>
+          <div className='d-flex d-inline-flex' style={{ marginRight: '10px', marginTop: '10px' }}>
+            <Pagination style={{ margin: '0' }} size={pagiSize} className='d-inline-flex'>
+              <Pagination.First onClick={() => {
+                updateCurrentPage(0)
+              }}
+              />
+              <Pagination.Prev onClick={() => {
+                if (currentPage > 0) {
+                  updateCurrentPage(currentPage - 1)
+                }
+              }}
+              />
+              {pagiItems.map((i) => {
+                if (i === 'dotted') {
+                  return <Pagination.Item key={Math.random()} disabled>...</Pagination.Item>
+                } else {
+                  return <Pagination.Item key={i} active={i === currentPage} onClick={handleChange}>{i + 1}</Pagination.Item>
+                }
+              })}
+              <Pagination.Next onClick={() => {
+                if (currentPage < numOfPage - 1) {
+                  updateCurrentPage(currentPage + 1)
+                }
+              }}
+              />
+              <Pagination.Last onClick={() => {
+                updateCurrentPage(numOfPage - 1)
+              }}
+              />
+            </Pagination>
+          </div>
+          <div className='d-flex d-inline-flex' style={{ marginRight: '10px', marginTop: '10px' }}>
+            <DropdownButton id='dropdown-basic-button' title={pageSize + ' / Page'} size={pagiSize} className='d-inline-flex'>
               {allPageSize.map((ps) => {
                 return <Dropdown.Item key={ps} eventKey={ps} onClick={(e) => { handleCustomPerPage(parseInt(e.target.text)) }}>{ps} / Page </Dropdown.Item>
               })}
-            </Dropdown.Menu>
-          </Dropdown>
-        </Col>}
-      <Col md={2}>
-        <Form
-          inline
-          onSubmit={handleGoTo}
-          style={{ width: '100%' }}
-        >
-          <Form.Control
-            type='number'
-            className='mb-1 mr-sm-1'
-            id='inlineFormInputName2'
-            placeholder={currentPage + 1}
-            min={0}
-            max={numOfPage}
-            style={{ width: '40%', marginLeft: '20px' }}
-            size={props.size}
-            onChange={(e) => {
-              setGoToPage(parseInt(e.target.value) - 1)
-            }}
-          />
-          <Button type='submit' size={props.size} style={{ marginTop: '-5px' }}>Go</Button>
-        </Form>
+            </DropdownButton>
+          </div>
+          {typeof props.onPageSizeChange !== 'undefined' &&
+            <div className='d-flex d-inline-flex' style={{ marginTop: '10px' }}>
+              <Form
+                inline
+                onSubmit={handleGoTo}
+                className='d-inline-flex'
+              >
+                <Form.Control
+                  type='number'
+                  id='inlineFormInputName2'
+                  placeholder={currentPage + 1}
+                  min={0}
+                  max={numOfPage}
+                  style={{ width: '60px', marginRight: '10px' }}
+                  size={pagiSize}
+                  onChange={(e) => {
+                    setGoToPage(parseInt(e.target.value) - 1)
+                  }}
+                />
+                <Button type='submit' size={pagiSize}>Go</Button>
+              </Form>
+            </div>}
+        </div>
       </Col>
     </Row>
   )
