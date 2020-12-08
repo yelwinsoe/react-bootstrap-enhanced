@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Nav, Button } from 'react-bootstrap'
+import { Nav } from 'react-bootstrap'
 import { PaginationPlus, Layout } from 'react-bootstrap-extended'
 import 'react-bootstrap-extended/dist/index.css'
 import logo from './img/react-bootstrap.svg'
@@ -30,9 +30,12 @@ const App = () => {
   return (
     <>
       <Layout
-        width='300px'
-        backgroundColor='#000'
-        show={showSidebar}
+        sidebarWidth='300px'
+        // sidebarBackgroundColor='#ccc'
+        showSidebar={showSidebar}
+        onSidebarChange={(status) => {
+          setShowSidebar(status)
+        }}
         sidebar={
           <div>
             <div style={{ textAlign: 'center', color: 'white' }}>
@@ -44,10 +47,10 @@ const App = () => {
             <Nav defaultActiveKey='/home' className='flex-column'>
               <Nav.Link href='/home'>Active</Nav.Link>
               <Nav.Link eventKey='link-1'>Link</Nav.Link>
-              <Nav.Link eventKey='link-2'>Link</Nav.Link>
+              {/* <Nav.Link eventKey='link-2'>Link</Nav.Link>
               <Nav.Link eventKey='disabled' disabled>
                 Disabled
-              </Nav.Link>
+              </Nav.Link> */}
             </Nav>
           </div>
         }
@@ -56,22 +59,16 @@ const App = () => {
             <Nav defaultActiveKey='/home'>
               <Nav.Link onClick={handleShowSidebar}>Sidebar</Nav.Link>
               <Nav.Link href='/home'>Active</Nav.Link>
-              <Nav.Link eventKey='link-1'>Link</Nav.Link>
+              {/* <Nav.Link eventKey='link-1'>Link</Nav.Link>
               <Nav.Link eventKey='link-2'>Link</Nav.Link>
               <Nav.Link eventKey='disabled' disabled>
                 Disabled
-              </Nav.Link>
+              </Nav.Link> */}
             </Nav>
           </div>
         }
         content={
           <div>
-            {/* <p onClick={() => {
-            setPageSize(30)
-            handleOnChange(1)
-          }}
-          >Test
-          </p> */}
             {records.map((t) => {
               return <div key={t}>{'Create React Library Example [' + t + '] 😄'}</div>
             })}

@@ -156,7 +156,6 @@ const PaginationPlus = (props) => {
             style={{ width: '40%', marginLeft: '20px' }}
             size={props.size}
             onChange={(e) => {
-              console.log(e.target.value)
               setGoToPage(parseInt(e.target.value) - 1)
             }}
           />
