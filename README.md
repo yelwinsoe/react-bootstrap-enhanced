@@ -85,7 +85,7 @@ import { Layout } from 'react-bootstrap-enhanced'
 
 ## Contribution
 This package is in development actively, feel free to do a pull request if you are interested in it. Thanks.
-Refer to this [create-react-library]([create-react-library](https://github.com/transitive-bullshit/create-react-library)) for development guideline.
+Refer to this [create-react-library](https://github.com/transitive-bullshit/create-react-library) for development guideline.
 ## License
 
 [MIT](https://github.com/yelwinsoe/react-bootstrap-enhanced/blob/master/LICENSE) © [yelwinsoe](https://github.com/yelwinsoe)
