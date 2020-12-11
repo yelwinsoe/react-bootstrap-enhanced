@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 
 const Layout = (props) => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 992)
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 992 : false)
   const showSidebar = typeof props.showSidebar !== 'undefined' ? props.showSidebar : true
 
   const sidebarRef = useRef(null)
