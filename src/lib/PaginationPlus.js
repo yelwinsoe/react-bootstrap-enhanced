@@ -10,7 +10,7 @@ const PaginationPlus = (props) => {
   const [pagiItems, setPagiItems] = useState([])
   const [goToPage, setGoToPage] = useState(null)
   const allPageSize = props.allPageSize ? props.allPageSize : [10, 20, 40, 80, 160]
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 992)
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 992 : false)
   const [pagiSize, setPagiSize] = useState(!isMobile ? props.size || 'md' : 'sm')
   let numOfPage = Math.ceil(props.total / props.pageSize)
 
