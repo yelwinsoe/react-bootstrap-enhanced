@@ -81,6 +81,7 @@ import { Layout } from 'react-bootstrap-enhanced'
 | sidebar | NA | No | Content of the sidebar |
 | topbar | NA | No | Content of the topbar |
 | content | NA | No | Content of the page |
+| contentStyle | NA | No | To style 'div' wrapper of content |
 
 
 ## Contribution

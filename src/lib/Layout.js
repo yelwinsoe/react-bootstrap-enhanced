@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { Fragment, useState, useRef } from 'react'
 
 const Layout = (props) => {
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 992 : false)
@@ -29,8 +29,11 @@ const Layout = (props) => {
     })
   }
 
+  const contentStyle = props.contentStyle || {}
+  contentStyle.paddingLeft = (!isMobile && showSidebar) ? props.sidebarWidth || '250px' : '0px'
+
   return (
-    <div>
+    <>
       <div
         style={{
           width: props.sidebarWidth || '250px',
@@ -44,11 +47,9 @@ const Layout = (props) => {
       >
         {props.sidebar}
       </div>
-      <div style={{ paddingLeft: (!isMobile && showSidebar) ? props.sidebarWidth || '250px' : '0px' }}>
-        <div ref={topbarRef}>{props.topbar}</div>
-        <div style={{ padding: '15px' }}>{props.content}</div>
-      </div>
-    </div>
+      <div style={{ paddingLeft: (!isMobile && showSidebar) ? props.sidebarWidth || '250px' : '0px' }} ref={topbarRef}>{props.topbar}</div>
+      <div style={contentStyle}>{props.content}</div>
+    </>
   )
 }
 

@@ -86,6 +86,7 @@ const App = () => {
             />
           </div>
         }
+        contentStyle={{ marginLeft: '15px' }}
       />
     </>
   )
