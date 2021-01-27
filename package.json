@@ -1,6 +1,6 @@
 {
   "name": "react-bootstrap-enhanced",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "An enhanced version of react-bootstrap for common UI.",
   "author": "yelwinsoe",
   "license": "MIT",
@@ -29,7 +29,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0",
+    "react": "^17.0.1",
     "bootstrap": "^4.5.3",
     "react-bootstrap": "^1.4.0"
   },
